@@ -15,12 +15,9 @@ foreach ($notas as $nota){
 }
 
 echo 'MOEDAS:' . PHP_EOL;
-//$valor = $valor * 100;
 foreach ($moedas as $moeda) {
-//    $moeda = $moeda * 100;
-    $numMoedas[$moeda] = (int) ($valor / $moeda);// * 100;
-//    var_dump(['moeda' => $moeda, 'qnt' => $numMoedas[$moeda], 'valor' => $valor]);
+    $numMoedas[$moeda] = (int) ($valor / $moeda);
     $valor = round($valor - ($numMoedas[$moeda] * $moeda), 2);
-    echo $numMoedas[$moeda] . ' moeda(s) de R$ ' . number_format($moeda, 2, '.', '') . PHP_EOL;
 
+    echo $numMoedas[$moeda] . ' moeda(s) de R$ ' . number_format($moeda, 2, '.', '') . PHP_EOL;
 }
