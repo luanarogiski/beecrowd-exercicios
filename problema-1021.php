@@ -8,16 +8,19 @@ $numMoedas = [];
 
 echo 'NOTAS:' . PHP_EOL;
 foreach ($notas as $nota){
-    $numNotas[$nota] = floor($valor / $nota);
+    $numNotas[$nota] = (int) ($valor / $nota);
     $valor = $valor - ($numNotas[$nota] * $nota);
 
     echo $numNotas[$nota] . ' nota(s) de R$ ' . number_format($nota, 2, '.', '') . PHP_EOL;
 }
 
 echo 'MOEDAS:' . PHP_EOL;
-foreach ($moedas as $moeda){
-    $numMoedas[$moeda] = floor($valor / $moeda);
-    $valor = $valor - ($numMoedas[$moeda] * $moeda);
-
+//$valor = $valor * 100;
+foreach ($moedas as $moeda) {
+//    $moeda = $moeda * 100;
+    $numMoedas[$moeda] = (int) ($valor / $moeda);// * 100;
+//    var_dump(['moeda' => $moeda, 'qnt' => $numMoedas[$moeda], 'valor' => $valor]);
+    $valor = round($valor - ($numMoedas[$moeda] * $moeda), 2);
     echo $numMoedas[$moeda] . ' moeda(s) de R$ ' . number_format($moeda, 2, '.', '') . PHP_EOL;
+
 }
